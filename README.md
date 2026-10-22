@@ -2,7 +2,7 @@
 
 Dashboard Streamlit de data storytelling on the severity of physical motorcycle accidents in France between 2019 and 2024.
 
-- **Online Application :** À COMPLÉTER (URL `https://….streamlit.app`)
+- **Online Application :** (URL `https://….streamlit.app`)](https://projet-moto-hipyeiaszkypfa9lxdtabk.streamlit.app)
 - **Demo Video :** À COMPLÉTER (lien)
 - **Author :** Laetitia ARNOULT, EFREI Paris, groupe BIO. Individual project « Streamlit Dashboard », 2026.
 
