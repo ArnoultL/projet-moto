@@ -3,11 +3,10 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-# ---------- Constantes ----------
 DATA_FILE = "data/processed/usagers_2019_2024.parquet"
 ANNEES = list(range(2019, 2025))
-SEED = 42            # graine pour l'échantillon de points de la carte
-MAX_POINTS = 15000   # nombre maximal de points sur la carte
+SEED = 42            
+MAX_POINTS = 15000 
 
 ROSE = "#C2185B"
 ROSE_CLAIR = "#F48FB1"
@@ -16,8 +15,6 @@ GRIS = "#8E7A83"
 TRANCHES_BINS = [0, 18, 25, 35, 45, 55, 65, 120]
 TRANCHES_LABELS = ["<18", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
 
-
-# ---------- Fonctions utilitaires ----------
 def style(fig):
     """Apply a consistent style to Plotly figures."""
     fig.update_layout(
@@ -67,8 +64,8 @@ df = load_data()
 
 # Title
 st.title("Motorcyclists: when an accident happens, it is more often fatal")
-st.caption("Source: ONISR, annual databases of personal injury accidents 2019 to 2024."
-            "Data.gouv.fr, Open License.")
+st.caption("Source: ONISR, [annual databases of personal injury accidents 2019 to 2024."
+            "Data.gouv.fr](https://www.data.gouv.fr/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2024), Open License.")
 
 # Sidebar
 with st.sidebar:
