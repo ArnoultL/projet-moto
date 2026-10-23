@@ -110,7 +110,7 @@ if len(motards) == 0:
     st.warning("No bikers in this selection: broaden the filters.")
     st.stop()
 
-# ---------- KPIs ----------
+#kpi
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("Motorcyclists involved (selected period)", nb(len(motards)))
 c2.metric("Killed bikers", nb(motards["tue"].sum()))
@@ -118,7 +118,7 @@ c3.metric("% of bikers killed", f"{fr(taux(motards))} %")
 c4.metric("Motorcyclist/other report",
           f"x {fr(taux(motards) / taux(autres))}" if taux(autres) else "n/a")
 
-# ---------- Graphique 1 : comparaison ----------
+#graph1
 if taux(autres):
     st.subheader(f"An involved biker is {fr(taux(motards) / taux(autres))} times more often killed")
 else:
@@ -135,8 +135,6 @@ st.plotly_chart(style(fig1), theme=None)
 st.caption("Description: Bar chart comparing the proportion of fatalities"
             "among motorcyclists and other occupants. The figures are shown"
             "in the tooltip.")
-
-# Graph 1
 evo = (d.groupby(["annee", "groupe"])["tue"]
        .agg(personnes="size", pct="mean").reset_index())
 evo["pct"] = (evo["pct"] * 100).round(2)
@@ -162,7 +160,7 @@ st.caption("Description: Graphs showing the proportion of people killed per year
             "and for other occupants. The year 2020, marked by lockdowns, is"
             "indicated by a vertical line. Figures are shown in the tooltip.)")
 
-# Graph by age
+#graph by age
 st.subheader("The proportion of motorcyclists killed tends to increase with age")
 motards = motards.assign(tranche=pd.cut(motards["age"], bins=TRANCHES_BINS,
                                         labels=TRANCHES_LABELS, right=False))
@@ -287,20 +285,6 @@ st.warning(
     "(9) The severity of 'hospitalized injury' is not comparable before and after 2018: "
     "only the proportion of people killed is used here."
 )
-
-# st.subheader("Un accident de moto est-il plus souvent mortel hors agglomération ?")
-# motards = motards.assign(
-#    zone=motards["agg"].map({1: "Hors agglomération", 2: "En agglomération"})
-# )
-# zone = (motards.dropna(subset=["zone"]).groupby("zone")["tue"]
-#         .agg(motards="size", tues="sum").reset_index())
-# zone["pct_tues"] = (zone["tues"] / zone["motards"] * 100).round(2)
-# fig5 = px.bar(
-#     zone, x="zone", y="pct_tues", color_discrete_sequence=[ROSE],
-#     labels={"zone": "Localisation", "pct_tues": "% de motards tués"},
-#     hover_data=["motards", "tues"],
-# )
-# st.plotly_chart(style(fig5), theme=None)
 
 #Conclusion
 st.header("Key takeaways")
