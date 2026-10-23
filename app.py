@@ -89,8 +89,8 @@ with st.sidebar:
         "**Laetitia Arnoult**  \n"
         "Ing2-BIO, 4th year  \n"
         "[laetitia.arnoult@efrei.net](mailto:laetitia.arnoult@efrei.net)  \n"
-        "[LinkedIn](https://www.linkedin.com/in/laetitia-arnoult-862174292/) · "
-        "[GitHub]https://github.com/ArnoultL/projet-moto)"
+        "[LinkedIn](https://www.linkedin.com/in/laetitia-arnoult-862174292/) \n"
+        "[GitHub](https://github.com/ArnoultL/projet-moto)"
     )
     st.caption(
         "Data visualization and analysis  \n"
