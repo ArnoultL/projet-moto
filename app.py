@@ -71,13 +71,30 @@ st.caption("Source: ONISR, annual databases of personal injury accidents 2019 to
 
 # Sidebar
 with st.sidebar:
-    st.header("Filter")
-    annees = st.multiselect("Years", ANNEES, default=ANNEES)
-    mois = st.slider("Month", 1, 12, (1, 12))
+    if os.path.exists("assets/logo_efrei.png"):
+        st.image("assets/logo_efrei.png", caption="Logo EFREI Paris")
+
+    st.header("Filtres")
+    annees = st.multiselect("Années", ANNEES, default=ANNEES)
+    mois = st.slider("Mois", 1, 12, (1, 12))
     comparaison = st.selectbox(
-        "Compare bikers to : ",
-        ["All occupants", "Car occupants only"],
+        "Comparer les motards à",
+        ["Tous les autres occupants", "Occupants de voitures seulement"],
         help="Les occupants de voitures sont les véhicules de code 7 (VL seul).",
+    )
+
+    st.divider()
+    st.markdown(
+        "**Laetitia Arnoult**  \n"
+        "Ing2-BIO, 4th year  \n"
+        "[laetitia.arnoult@efrei.net](mailto:laetitia.arnoult@efrei.net)  \n"
+        "[LinkedIn](https://www.linkedin.com/in/laetitia-arnoult-862174292/) · "
+        "[GitHub]https://github.com/ArnoultL/projet-moto)"
+    )
+    st.caption(
+        "Data visualization and analysis  \n"
+        "Project proposed by Prof. Mano Mathew  \n"
+        "[LinkedIn](https://www.linkedin.com/in/manomathew/)"
     )
 
 if not annees:
