@@ -11,7 +11,6 @@ MOTS_CLES = {"caract": "carac", "lieux": "lieux", "vehicules": "vehic", "usagers
 
 
 def find_file(kind, year):
-    """Trouve le CSV d'une rubrique et d'une année d'après son nom."""
     trouves = [p for p in RAW.glob("*.csv")
                if MOTS_CLES[kind] in p.name.lower() and str(year) in p.name]
     if len(trouves) != 1:
@@ -20,7 +19,6 @@ def find_file(kind, year):
 
 
 def read(path):
-    """Lit un CSV en détectant le séparateur, et uniformise le nom de la clé."""
     with open(path, encoding="utf-8-sig", errors="ignore") as f:
         sep = ";" if ";" in f.readline() else ","
     df = pd.read_csv(path, sep=sep, encoding="utf-8-sig", low_memory=False)
